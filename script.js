@@ -1,35 +1,31 @@
-
-
 // for(var i=0; i<3; i++){
 
 //     document.querySelectorAll(".myButton")[i].addEventListener("click",function(){
 
 //         var text = this.innerHTML;
 //         document.querySelector("h1").innerHTML = text + "is clicked";
-    
+
 //     });
 
 // }
 
 
-for(var i=0; i<3; i++){
+for (var i = 0; i < 3; i++) {
 
 
-    document.querySelectorAll(".myButton")[i].addEventListener("click",function(){
+    document.querySelectorAll(".myButton")[i].addEventListener("click", function () {
         var text = this.innerHTML;
         console.log(text);
         audioPlay(text);
-
-
-        
+        playAnimation(text);
     });
 
 
 
-    function audioPlay(text){
+    function audioPlay(text) {
 
 
-        switch(text){
+        switch (text) {
 
             case "a":
                 var audio = new Audio("/sounds/a.mp3");
@@ -43,9 +39,23 @@ for(var i=0; i<3; i++){
                 var audio = new Audio("/sounds/c.mp3");
                 audio.play();
                 break;
-    
+
         }
 
     }
-  
+
+
+    function playAnimation(text) {
+
+        var selectedButton = document.querySelector("." + text);
+        // selectedButton.classList.add(".anime");
+        selectedButton.classList.add("anime");
+
+
+
+        setTimeout(function(){
+            selectedButton.classList.remove("anime");
+        },5000);
+    }
+
 }
